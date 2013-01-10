@@ -1,0 +1,31 @@
+Jan 10 12:48:28: main: Command pipe created
+Jan 10 12:48:28: main: Initializing Ocsipersist-dbm...
+Jan 10 12:48:28: main: Launching a new Ocsidbm process: /usr/local/lib/ocaml/3.12.1/ocsigenserver/extensions/ocsidbm.opt on directory local/var/data/mlopt/ocsipersist.
+Jan 10 12:48:30: main: ...Initialization of Ocsipersist-dbm complete
+Jan 10 12:48:30: main: While parsing config file, tag <host>: No defaulthostname, assuming it is "rigdzin.cc"
+Jan 10 12:48:30: main: Ocsigen has been launched (initialisations ok)
+Jan 10 13:18:32: main: Initializing Ocsipersist-dbm...
+Jan 10 13:18:32: main: Launching a new Ocsidbm process: /usr/local/lib/ocaml/3.12.1/ocsigenserver/extensions/ocsidbm.opt on directory local/var/data/mlopt/ocsipersist.
+Jan 10 13:18:33: main: ...Initialization of Ocsipersist-dbm complete
+Jan 10 13:18:33: main: While parsing config file, tag <host>: No defaulthostname, assuming it is "rigdzin.cc"
+Jan 10 13:18:33: main: Ocsigen has been launched (initialisations ok)
+Jan 10 13:36:41: main: Initializing Ocsipersist-dbm...
+Jan 10 13:36:41: main: Launching a new Ocsidbm process: /usr/local/lib/ocaml/3.12.1/ocsigenserver/extensions/ocsidbm.opt on directory local/var/data/mlopt/ocsipersist.
+Jan 10 13:36:42: main: ...Initialization of Ocsipersist-dbm complete
+Jan 10 13:36:42: main: While parsing config file, tag <host>: No defaulthostname, assuming it is "rigdzin.cc"
+Jan 10 13:36:42: main: Ocsigen has been launched (initialisations ok)
+Jan 10 13:40:45: main: Initializing Ocsipersist-dbm...
+Jan 10 13:40:45: main: Launching a new Ocsidbm process: /usr/local/lib/ocaml/3.12.1/ocsigenserver/extensions/ocsidbm.opt on directory local/var/data/mlopt/ocsipersist.
+Jan 10 13:40:46: main: ...Initialization of Ocsipersist-dbm complete
+Jan 10 13:40:46: main: While parsing config file, tag <host>: No defaulthostname, assuming it is "rigdzin.cc"
+Jan 10 13:40:46: main: Ocsigen has been launched (initialisations ok)
+Jan 10 14:00:50: main: Initializing Ocsipersist-dbm...
+Jan 10 14:00:50: main: Launching a new Ocsidbm process: /usr/local/lib/ocaml/3.12.1/ocsigenserver/extensions/ocsidbm.opt on directory local/var/data/mlopt/ocsipersist.
+Jan 10 14:00:51: main: ...Initialization of Ocsipersist-dbm complete
+Jan 10 14:00:51: main: While parsing config file, tag <host>: No defaulthostname, assuming it is "rigdzin.cc"
+Jan 10 14:00:51: main: Ocsigen has been launched (initialisations ok)
+Jan 10 14:21:28: main: Initializing Ocsipersist-dbm...
+Jan 10 14:21:28: main: Launching a new Ocsidbm process: /usr/local/lib/ocaml/3.12.1/ocsigenserver/extensions/ocsidbm.opt on directory local/var/data/mlopt/ocsipersist.
+Jan 10 14:21:29: main: ...Initialization of Ocsipersist-dbm complete
+Jan 10 14:21:29: main: While parsing config file, tag <host>: No defaulthostname, assuming it is "rigdzin.cc"
+Jan 10 14:21:29: main: Ocsigen has been launched (initialisations ok)
