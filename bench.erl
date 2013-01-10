@@ -103,7 +103,7 @@ collector(F) ->
 
 
 pool(Req) ->
-  pool(Req, [], 100).
+  pool(Req, [], 1000).
 
 
 pool(Req, Workers, Count) when length(Workers) < Count ->

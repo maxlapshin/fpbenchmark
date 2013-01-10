@@ -22,9 +22,9 @@ library
 
     if flag(dev) || flag(library-only)
        cpp-options:   -DDEVELOPMENT
-        ghc-options:   -Wall -O0 -threaded -rtsopts
+        ghc-options:   -Wall -threaded -rtsopts
     else
-        ghc-options:   -Wall -O2 -threaded -rtsopts
+        ghc-options:   -Wall -threaded -rtsopts
 
     extensions: TemplateHaskell
                 QuasiQuotes
@@ -74,13 +74,13 @@ executable         yeso
                      , yeso
                      , yesod-default
 
-    ghc-options:       -threaded -O2 -rtsopts
+    ghc-options:       -threaded -rtsopts
 
 test-suite test
     type:              exitcode-stdio-1.0
     main-is:           main.hs
     hs-source-dirs:    tests
-    ghc-options:       -Wall -O2 -threaded -rtsopts
+    ghc-options:       -Wall -threaded -rtsopts
 
     build-depends: base
                  , yeso
