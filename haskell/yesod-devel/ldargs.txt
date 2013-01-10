@@ -1,0 +1,1 @@
+["-x","--hash-size=31","--reduce-memory-overheads","-r","-o","dist/build/HSyeso-0.0.0.o","dist/build/Application.o","dist/build/Foundation.o","dist/build/Import.o","dist/build/Settings.o","dist/build/Settings/StaticFiles.o","dist/build/Settings/Development.o","dist/build/Handler/Home.o"]
