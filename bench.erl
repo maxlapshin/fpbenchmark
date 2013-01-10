@@ -140,7 +140,7 @@ loop_worker(Req, Socket) ->
       ok;
     {error, _Error} ->
       ets:update_counter(http_stats, stat, {#stat.errors, 1}),
-      % io:format("error: ~p~n", [_Error]),
+      io:format("error: ~p~n", [_Error]),
       ok;
     {ok, Socket1, Body} ->
       T2 = erlang:now(),
@@ -193,6 +193,8 @@ fetch0(#req{request = Request} = Req, Socket, RetryCount) ->
   inet:setopts(Socket, [{active,false}, {packet, http_bin}]),
   gen_tcp:send(Socket, Request),
   case gen_tcp:recv(Socket, 0, ?TIMEOUT) of
+    {ok, {http_error, Error}} ->
+      throw({error, {http, Error}});
     {ok, {http_response, _HttpVersion, 200, _HttpString}} ->
       ok;
     {ok, {http_response, _HttpVersion, Code, _HttpString}} ->
@@ -211,7 +213,10 @@ fetch0(#req{request = Request} = Req, Socket, RetryCount) ->
       {ok, http_eoh} -> BodyLen;
       {ok, {http_header, _, 'Content-Length', _, Length}} ->
         F(F, Socket, list_to_integer(binary_to_list(Length)));
+      {ok, {http_header, _, 'Transfer-Encoding', _, <<"chunked">>}} ->
+        F(F, Socket, chunked);
       {ok, {http_header, _, _Header, _, _Value}} ->
+        % io:format("~p: ~p~n", [_Header, _Value]),
         F(F, Sock, BodyLen);
       % {error, closed} when RetryCount > 1 ->
       %   gen_tcp:close(Socket),
@@ -226,13 +231,46 @@ fetch0(#req{request = Request} = Req, Socket, RetryCount) ->
       {ok, Socket, undefined};
     ContentLength ->
       inet:setopts(Socket, [{packet,raw}]),
-      case gen_tcp:recv(Socket, ContentLength) of
+      case read_body(Socket, ContentLength) of
         {ok, Body} ->
-          % io:format("Fetched ~s (~B bytes)~n", [URL, size(Body)]),
-          {ok, Socket, Body};
+          % io:format("Fetched ~s (~B bytes)~n", [Req#req.url, iolist_size(Body)]),
+          {ok, Socket, iolist_to_binary(Body)};
         {error, Reason} ->
           gen_tcp:close(Socket),
           throw({error, {body, ContentLength, Reason}})
       end
   end.
+
+read_body(Socket, ContentLength) when is_number(ContentLength) ->
+  gen_tcp:recv(Socket, ContentLength);
+
+read_body(Socket, chunked) ->
+  ok = inet:setopts(Socket, [{packet,line}]),
+  case gen_tcp:recv(Socket, 0, ?TIMEOUT) of
+    {ok, Header} ->
+      {match, [C]} = re:run(Header, "([\\d\\w]+)", [{capture,all_but_first,list}]),
+      Len = list_to_integer(C, 16),
+      ok = inet:setopts(Socket, [{packet,raw}]),
+      case Len of
+        0 ->
+          {ok, <<"\r\n">>} = gen_tcp:recv(Socket, 2, ?TIMEOUT),
+          {ok, []};
+        _ ->
+          {ok, Chunk} = case gen_tcp:recv(Socket, Len, ?TIMEOUT) of
+            {ok, C_} -> {ok, C_};
+            {error, _} = Error -> throw(Error)
+          end,
+          {ok, <<"\r\n">>} = gen_tcp:recv(Socket, 2, ?TIMEOUT),
+          {ok, Rest} = read_body(Socket, chunked),
+          {ok, [Chunk|Rest]}
+      end;
+    {error, _} = Error ->
+      throw(Error)
+  end.
+
+
+
+
+
+
 
