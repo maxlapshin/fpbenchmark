@@ -1,0 +1,6 @@
+
+
+    $ cabal configure
+    $ cabal build
+    $ ./dist/build/yeso/yeso production +RTS -N -A1000000
+
