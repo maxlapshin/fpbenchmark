@@ -1,0 +1,86 @@
+#!/bin/bash
+
+H=`hostname -f`
+
+HIP=
+##FIX: should handle multiple IPs computer by selecting first IP from the list
+HIPS=`for i in $HIP; do echo $i | grep -v "127.0."; done`
+
+IP=$HIPS
+WEBPORT=8000
+APPSERVER=app
+GAMESERVER=game
+WEBSERVER=web
+SERVERPORT=9000
+SERVERHOST=""
+GAMESERVERHOST=127.0.0.1
+JSPACK=min
+CSSPACK=min
+SYNC=false
+POOL=5000000
+
+while [ $# -gt 0 ]
+do
+    case $1 in
+	-ip)
+	    IP=$2;shift 2;;
+	-app)
+	    APPSERVER=$2;shift 2;;
+	-srv)
+	    SERVERHOST=$2;shift 2;;
+	-srv-port)
+	    SERVERPORT=$2;shift 2;;
+	-srv-host)
+	    GAMESERVERHOST=$2;shift 2;;
+	-game)
+	    GAMESERVER=$2;shift 2;;
+	-web)
+	    WEBSERVER=$2;shift 2;;
+	-pool)
+	    POOL=$2;shift 2;;
+	-web-port)
+	    WEBPORT=$2;shift 2;;
+	-mq-host)
+	    MQ_HOST=$2;shift 2;;
+	-mq-port)
+	    MQ_PORT=$2;shift 2;;
+	-mq-user)
+	    MQ_USER=$2;shift 2;;
+	-mq-pass)
+	    MQ_PASS=$2;shift 2;;
+	-mq-vhost)
+	    MQ_VHOST=$2;shift 2;;
+	-fb-app-id)
+	    FBAPPID=$2;shift 2;;
+	-fb-app-secret)
+	    FBAPPSECRET=$2;shift 2;;
+	-tw-consumer-key)
+	    TWCONSUMERKEY=$2;shift 2;;
+	-tw-consumer-secret)
+	    TWCONSUMERSECRET=$2;shift 2;;
+	-jspack)
+	    JSPACK=$2;shift 2;;
+        -csspack)
+	    CSSPACK=$2;shift 2;;
+        -sync)
+	    SYNC=$2;shift 2;;
+	*) break;;
+    esac
+done
+
+cat vm.args.template | sed "s#WEBSERVER_NODE#public@$H#g" > vm.args
+
+./config -file app.config nsm_db app_srv_node -atom app@$H
+./config -file app.config nsm_db game_srv_node -atom game@$H
+./config -file app.config nsm_db web_srv_node -atom public@$H
+./config -file app.config nsm_db riak_srv_node -atom app@$H
+./config -file app.config nsx_utils app_srv_node -atom app@$H
+./config -file app.config nsm_db sync_nodes -atom $SYNC
+./config -file app.config nsx_idgen game_pool -integer $POOL
+./config -file app.config nsm_db nodes -list [app@$H,game@$H,web@$H,public@$H]
+./config -file app.config nsp_srv static_address -list "\"http://$H:$WEBPORT\""
+./config -file app.config nsp_srv http_address -list "\"http://$H:$WEBPORT\""
+./config -file app.config nsp_srv https_address -list "\"http://$H:$WEBPORT\""
+./config -file app.config nsp_srv bind_address -list "\"$IP\""
+./config -file app.config nsp_srv bind_port -integer $WEBPORT
+

@@ -1,0 +1,2 @@
+-include("loger.hrl").
+-include("gettext.hrl").

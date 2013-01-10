@@ -1,0 +1,9 @@
+{application, nsp_srv,
+ [
+  {description, "Public Web Server"},
+  {vsn, "1"},
+  {registered, []},
+  {applications, [kernel, stdlib, sasl, mnesia, ssl, nprocreg, cowboy, mimetypes]},
+  {mod, { nsp_srv_app, []}},
+  {env, []}
+ ]}.

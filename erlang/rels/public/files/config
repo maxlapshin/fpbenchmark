@@ -1,0 +1,58 @@
+#!/usr/bin/env escript
+
+main(Args) ->
+    case length(Args) =/= 6 of
+         true -> usage();
+         false -> process_args(Args)
+    end.
+
+usage() ->
+    io:format("usage: config -file app.config application variable value \n").
+
+process_args(["-file", ConfigFile|Rest]) ->
+    {ok,[Apps]} = file:consult(ConfigFile),
+    [App,Var,Format2,Value] = Rest,
+    Val = case Format2 of
+        "-integer" -> Format = modify, list_to_integer(Value);
+        "-list" -> Format = modify,
+                   {ok, Ts, _} = erl_scan:string(Value ++ "."),
+                   {ok, Term} = erl_parse:parse_term(Ts),
+                   Term;
+        "-atom" -> Format = modify, list_to_atom(Value);
+        "-listener" -> Format = modify, [{"0.0.0.0",list_to_integer(Value)}];
+        "-delete" -> Format = delete, Value
+    end,
+    Res = process_apps(Apps,list_to_atom(App),no,[],list_to_atom(Var),Val,Format),
+    file:write_file(ConfigFile,io_lib:fwrite("~p.~n",[Res])),
+    ok.
+
+process_apps([H|T],App,Found,Acc,Var,Val,Format) ->
+    {Name,Vars} = H,
+    case App =:= Name of
+         true -> process_apps(T,App,yes,Acc++[{Name,process_vars(Vars,App,no,[],Var,Val,Format)}],Var,Val,Format);
+         false -> process_apps(T,App,Found,Acc++[H],Var,Val,Format)
+    end;
+process_apps([],App,Found,Acc,Var,Val,_) ->
+    case Found of
+         yes -> Acc;
+         no -> io:format("Added application ~p parameter ~p with ~p~n",[App,Var,Val]),
+               Acc++[{App,[{Var,Val}]}]
+    end.
+
+process_vars([H|T],App,Found,Acc,Var,Val,Format) ->
+    {Name,_} = H,
+    case Var =:= Name of
+         true -> case Format of
+                      delete -> io:format("Modified application ~p parameter ~p with value ~p~n",[App,Var,Val]),
+                                process_vars(T,App,yes,Acc,Var,Val,Format);
+                      modify -> io:format("Modified application ~p parameter ~p with value ~p~n",[App,Var,Val]),
+                                process_vars(T,App,yes,Acc++[{Name,Val}],Var,Val,Format)
+                 end;
+         false -> process_vars(T,App,Found,Acc++[H],Var,Val,Format)
+    end;
+process_vars([],App,Found,Acc,Var,Val,_Format) ->
+    case Found of
+         yes -> Acc;
+         no ->  io:format("Added application ~p parameter ~p with value ~p ~n",[App,Var,Val]),
+                Acc ++ [{Var,Val}]
+    end.
