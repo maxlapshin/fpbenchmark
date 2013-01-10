@@ -25,7 +25,7 @@ start(_StartType, _StartArgs) ->
                  {ok, Pid} ->
 
                               io:format("Web Started OK\n."), {ok, Pid};
-         {error, shutdown} -> {ok, Port} = application:get_env(webmachine, port),
+         {error, shutdown} -> {ok, Port} = application:get_env(nsp_srv, bind_port),
                               io:format("Nnitrogen_sup can't start. Tried port ~p\n", [Port]),
                               erlang:halt(1);
                          X -> io:format("Error ~p",[X]), erlang:halt(1)
