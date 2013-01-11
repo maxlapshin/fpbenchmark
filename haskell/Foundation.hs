@@ -57,11 +57,14 @@ instance Yesod App where
 
     -- Store session data on the client in encrypted cookies,
     -- default session idle timeout is 120 minutes
-    makeSessionBackend _ = do
-        key <- getKey "config/client_session_key.aes"
-        let timeout = 120 * 60 -- 120 minutes
-        (getCachedDate, _closeDateCache) <- clientSessionDateCacher timeout
-        return . Just $ clientSessionBackend2 key getCachedDate
+   
+    makeSessionBackend = const $ return Nothing
+
+--    makeSessionBackend _ = do
+--        key <- getKey "config/client_session_key.aes"
+--        let timeout = 120 * 60 -- 120 minutes
+--        (getCachedDate, _closeDateCache) <- clientSessionDateCacher timeout
+--        return . Just $ clientSessionBackend2 key getCachedDate
 
     defaultLayout widget = do
         master <- getYesod
