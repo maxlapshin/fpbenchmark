@@ -12,6 +12,7 @@ init(_Transport, Req, []) ->
 
 handle(Req, State) ->
 	{ok, Req2} = cowboy_req:reply(200, [], <<"Hello world!">>, Req),
+%         error_logger:info_msg("ok"),
 	{ok, Req2, State}.
 
 terminate(_Req, _State) ->
