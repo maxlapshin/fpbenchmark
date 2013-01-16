@@ -1,6 +1,6 @@
 
 yesod: yesod.hs
-	ghc --make -threaded -rtsopts yesod.hs
+	ghc --make -O2 -threaded -rtsopts yesod.hs
 
 run:
 	./yesod production +RTS -N4 -A1000000 2>/dev/null

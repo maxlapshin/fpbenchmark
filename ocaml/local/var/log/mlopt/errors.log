@@ -6,3 +6,60 @@
 
 Jan 10 23:23:22: main: Cannot connect to Ocsidbm. Will continue without persistent session support. Error message is: Connection refused in connect(). Have a look at the logs to see if there is an error message from the Ocsidbm process.
 Jan 10 23:23:22: main: Fatal - While loading /usr/local/lib/ocaml/3.12.1/ocsigenserver/extensions/ocsipersist-dbm.cmxs: Unix.Unix_error(Unix.ECONNREFUSED, "connect", "")
+14-01-2013 21:15:34 Ocsidbm - Please make sure that the directory local/var/data/mlopt/ocsipersist exists, writable for ocsidbm, and no other ocsidbm process is running on the same directory. If not, remove the file local/var/data/mlopt/ocsipersist/socket
+
+14-01-2013 21:15:37 Ocsidbm - Please make sure that the directory local/var/data/mlopt/ocsipersist exists, writable for ocsidbm, and no other ocsidbm process is running on the same directory. If not, remove the file local/var/data/mlopt/ocsipersist/socket
+
+14-01-2013 21:15:40 Ocsidbm - Please make sure that the directory local/var/data/mlopt/ocsipersist exists, writable for ocsidbm, and no other ocsidbm process is running on the same directory. If not, remove the file local/var/data/mlopt/ocsipersist/socket
+
+Jan 14 21:15:41: main: Cannot connect to Ocsidbm. Will continue without persistent session support. Error message is: Connection refused in connect(). Have a look at the logs to see if there is an error message from the Ocsidbm process.
+Jan 14 21:15:41: main: Fatal - While loading /usr/local/lib/ocaml/3.12.1/ocsigenserver/extensions/ocsipersist-dbm.cmxs: Unix.Unix_error(Unix.ECONNREFUSED, "connect", "")
+14-01-2013 21:16:24 Ocsidbm - Please make sure that the directory local/var/data/mlopt/ocsipersist exists, writable for ocsidbm, and no other ocsidbm process is running on the same directory. If not, remove the file local/var/data/mlopt/ocsipersist/socket
+
+14-01-2013 21:16:27 Ocsidbm - Please make sure that the directory local/var/data/mlopt/ocsipersist exists, writable for ocsidbm, and no other ocsidbm process is running on the same directory. If not, remove the file local/var/data/mlopt/ocsipersist/socket
+
+14-01-2013 21:16:30 Ocsidbm - Please make sure that the directory local/var/data/mlopt/ocsipersist exists, writable for ocsidbm, and no other ocsidbm process is running on the same directory. If not, remove the file local/var/data/mlopt/ocsipersist/socket
+
+Jan 14 21:16:31: main: Cannot connect to Ocsidbm. Will continue without persistent session support. Error message is: Connection refused in connect(). Have a look at the logs to see if there is an error message from the Ocsidbm process.
+Jan 14 21:16:31: main: Fatal - While loading /usr/local/lib/ocaml/3.12.1/ocsigenserver/extensions/ocsipersist-dbm.cmxs: Unix.Unix_error(Unix.ECONNREFUSED, "connect", "")
+14-01-2013 21:17:05 Ocsidbm - Please make sure that the directory local/var/data/mlopt/ocsipersist exists, writable for ocsidbm, and no other ocsidbm process is running on the same directory. If not, remove the file local/var/data/mlopt/ocsipersist/socket
+
+14-01-2013 21:17:08 Ocsidbm - Please make sure that the directory local/var/data/mlopt/ocsipersist exists, writable for ocsidbm, and no other ocsidbm process is running on the same directory. If not, remove the file local/var/data/mlopt/ocsipersist/socket
+
+14-01-2013 21:17:11 Ocsidbm - Please make sure that the directory local/var/data/mlopt/ocsipersist exists, writable for ocsidbm, and no other ocsidbm process is running on the same directory. If not, remove the file local/var/data/mlopt/ocsipersist/socket
+
+Jan 14 21:17:12: main: Cannot connect to Ocsidbm. Will continue without persistent session support. Error message is: Connection refused in connect(). Have a look at the logs to see if there is an error message from the Ocsidbm process.
+Jan 14 21:17:12: main: Fatal - While loading /usr/local/lib/ocaml/3.12.1/ocsigenserver/extensions/ocsipersist-dbm.cmxs: Unix.Unix_error(Unix.ECONNREFUSED, "connect", "")
+14-01-2013 21:18:36 Ocsidbm - Please make sure that the directory local/var/data/mlopt/ocsipersist exists, writable for ocsidbm, and no other ocsidbm process is running on the same directory. If not, remove the file local/var/data/mlopt/ocsipersist/socket
+
+14-01-2013 21:18:39 Ocsidbm - Please make sure that the directory local/var/data/mlopt/ocsipersist exists, writable for ocsidbm, and no other ocsidbm process is running on the same directory. If not, remove the file local/var/data/mlopt/ocsipersist/socket
+
+14-01-2013 21:18:42 Ocsidbm - Please make sure that the directory local/var/data/mlopt/ocsipersist exists, writable for ocsidbm, and no other ocsidbm process is running on the same directory. If not, remove the file local/var/data/mlopt/ocsipersist/socket
+
+Jan 14 21:18:43: main: Cannot connect to Ocsidbm. Will continue without persistent session support. Error message is: Connection refused in connect(). Have a look at the logs to see if there is an error message from the Ocsidbm process.
+Jan 14 21:18:43: main: Fatal - While loading /usr/local/lib/ocaml/3.12.1/ocsigenserver/extensions/ocsipersist-dbm.cmxs: Unix.Unix_error(Unix.ECONNREFUSED, "connect", "")
+Jan 14 21:19:07: main: Fatal - While loading /usr/local/lib/ocaml/3.12.1/eliom/server/eliom.cmxs: error loading shared library: /usr/local/lib/ocaml/3.12.1/eliom/server/eliom.cmxs: undefined symbol: camlOcsipersist
+14-01-2013 21:20:52 Ocsidbm - Please make sure that the directory local/var/data/mlopt/ocsipersist exists, writable for ocsidbm, and no other ocsidbm process is running on the same directory. If not, remove the file local/var/data/mlopt/ocsipersist/socket
+
+14-01-2013 21:20:55 Ocsidbm - Please make sure that the directory local/var/data/mlopt/ocsipersist exists, writable for ocsidbm, and no other ocsidbm process is running on the same directory. If not, remove the file local/var/data/mlopt/ocsipersist/socket
+
+14-01-2013 21:20:58 Ocsidbm - Please make sure that the directory local/var/data/mlopt/ocsipersist exists, writable for ocsidbm, and no other ocsidbm process is running on the same directory. If not, remove the file local/var/data/mlopt/ocsipersist/socket
+
+Jan 14 21:20:59: main: Cannot connect to Ocsidbm. Will continue without persistent session support. Error message is: Connection refused in connect(). Have a look at the logs to see if there is an error message from the Ocsidbm process.
+Jan 14 21:20:59: main: Fatal - While loading /usr/local/lib/ocaml/3.12.1/ocsigenserver/extensions/ocsipersist-dbm.cmxs: Unix.Unix_error(Unix.ECONNREFUSED, "connect", "")
+14-01-2013 21:21:18 Ocsidbm - Please make sure that the directory local/var/data/mlopt/ocsipersist exists, writable for ocsidbm, and no other ocsidbm process is running on the same directory. If not, remove the file local/var/data/mlopt/ocsipersist/socket
+
+14-01-2013 21:21:21 Ocsidbm - Please make sure that the directory local/var/data/mlopt/ocsipersist exists, writable for ocsidbm, and no other ocsidbm process is running on the same directory. If not, remove the file local/var/data/mlopt/ocsipersist/socket
+
+14-01-2013 21:21:24 Ocsidbm - Please make sure that the directory local/var/data/mlopt/ocsipersist exists, writable for ocsidbm, and no other ocsidbm process is running on the same directory. If not, remove the file local/var/data/mlopt/ocsipersist/socket
+
+Jan 14 21:21:26: main: Cannot connect to Ocsidbm. Will continue without persistent session support. Error message is: Connection refused in connect(). Have a look at the logs to see if there is an error message from the Ocsidbm process.
+Jan 14 21:21:26: main: Fatal - While loading /usr/local/lib/ocaml/3.12.1/ocsigenserver/extensions/ocsipersist-dbm.cmxs: Unix.Unix_error(Unix.ECONNREFUSED, "connect", "")
+14-01-2013 21:25:38 Ocsidbm - Please make sure that the directory local/var/data/mlopt/ocsipersist exists, writable for ocsidbm, and no other ocsidbm process is running on the same directory. If not, remove the file local/var/data/mlopt/ocsipersist/socket
+
+14-01-2013 21:25:42 Ocsidbm - Please make sure that the directory local/var/data/mlopt/ocsipersist exists, writable for ocsidbm, and no other ocsidbm process is running on the same directory. If not, remove the file local/var/data/mlopt/ocsipersist/socket
+
+14-01-2013 21:25:45 Ocsidbm - Please make sure that the directory local/var/data/mlopt/ocsipersist exists, writable for ocsidbm, and no other ocsidbm process is running on the same directory. If not, remove the file local/var/data/mlopt/ocsipersist/socket
+
+Jan 14 21:25:46: main: Cannot connect to Ocsidbm. Will continue without persistent session support. Error message is: Connection refused in connect(). Have a look at the logs to see if there is an error message from the Ocsidbm process.
+Jan 14 21:25:46: main: Fatal - While loading /usr/local/lib/ocaml/3.12.1/ocsigenserver/extensions/ocsipersist-dbm.cmxs: Unix.Unix_error(Unix.ECONNREFUSED, "connect", "")
