@@ -1,7 +1,7 @@
 #!/usr/bin/env perl
 
 my $server = shift @ARGV || "localhost";
-my $port = shift @ARGV || "8888";
+my $port = shift @ARGV || "8080";
 my $path = shift @ARGV || "/";
 
 my $cmdline = "-t4 http://$server:$port/";
@@ -52,7 +52,7 @@ sub measure($) {
     open(I, "$cmd |") or die "Can't open wrk: $!";
     while(<I>) {
         $err = $1 if /^  Socket errors: connect 0, read 0, write 0, timeout (\d+)/;
-        $rps = $1 if /^Requests\/sec:   (\d+)/;
+        $rps = $1 if /^Requests\/sec:  (\d+)/;
     };
     close(I);
     print "Attempt $attempt rate $rate rps => $rps rps with $err error rate\n";
